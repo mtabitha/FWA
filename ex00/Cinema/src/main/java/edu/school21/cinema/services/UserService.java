@@ -4,6 +4,7 @@ import edu.school21.cinema.dao.UserDao;
 import edu.school21.cinema.models.User;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 public class UserService {
 
@@ -13,8 +14,11 @@ public class UserService {
         this.userDao = userDao;
     }
 
-
     public void newUser(User user, HttpServletResponse resp) {
         userDao.save(user);
+    }
+
+    public Optional<User> getUser(String email) {
+        return userDao.findByEmail(email);
     }
 }

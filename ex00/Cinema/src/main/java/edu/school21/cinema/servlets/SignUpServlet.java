@@ -43,7 +43,6 @@ public class SignUpServlet extends HttpServlet {
                 passwordEncoder.encode(req.getParameter("password")));
 
         userService.newUser(user, resp);
-        System.out.println(user);
         resp.sendRedirect("/signIn");
 
     }

@@ -2,6 +2,11 @@ package edu.school21.cinema.dao;
 
 import edu.school21.cinema.models.User;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class UserDao {
 
@@ -11,6 +16,15 @@ public class UserDao {
     private String SQL_SAVE = "INSERT INTO usr VALUES (?, ?, ? ,?)";
     //language=SQL
     private String SQL_FIND_BY_EMAIL = "SELECT * FROM usr WHERE email=?";
+
+    private RowMapper<User> userRowMapper = (rs, rowNum) -> {
+        return new User(
+                    rs.getString("firstName"),
+                    rs.getString("lastName"),
+                    rs.getString("email"),
+                    rs.getString("password")
+        );
+    };
 
     public UserDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -25,7 +39,7 @@ public class UserDao {
         );
     }
 
-//    public Optional<User> findByEmail(String email) {
-//        jdbcTemplate.query(SQL_FIND_BY_EMAIL, email, );
-//    }
+    public Optional<User> findByEmail(String email) {
+        return jdbcTemplate.query(SQL_FIND_BY_EMAIL, userRowMapper, email).stream().findAny();
+    }
 }

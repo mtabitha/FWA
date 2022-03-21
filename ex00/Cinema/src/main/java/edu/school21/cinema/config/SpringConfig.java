@@ -50,8 +50,8 @@ public class SpringConfig  {
     DatabasePopulator databasePopulator() {
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
         databasePopulator.addScripts(
-                new ClassPathResource("schema.sql"),
-                new ClassPathResource("data.sql")
+                new ClassPathResource("sql/schema.sql"),
+                new ClassPathResource("sql/data.sql")
         );
         return databasePopulator;
     }
