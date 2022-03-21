@@ -1,0 +1,10 @@
+edu/school21/cinema/models/User.class
+edu/school21/cinema/servlets/MainServlet.class
+edu/school21/cinema/servlets/SignUpServlet.class
+edu/school21/cinema/dao/UserDao.class
+edu/school21/cinema/servlets/SignInServlet.class
+edu/school21/cinema/config/SpringConfig.class
+edu/school21/cinema/filters/MainFilter.class
+edu/school21/cinema/listeners/MyServletContextListener.class
+edu/school21/cinema/services/UserService.class
+edu/school21/cinema/servlets/GreetingServlet.class
