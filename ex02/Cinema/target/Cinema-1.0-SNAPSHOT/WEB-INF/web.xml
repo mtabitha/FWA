@@ -53,10 +53,11 @@
 
 <servlet>
     <servlet-name>DownloadImage</servlet-name>
-    <servlet-class>edu.school21.cinema.servlets.DownloadImageServlet</servlet-class>
+    <servlet-class>edu.school21.cinema.servlets.ImageServlet</servlet-class>
 </servlet>
 <servlet-mapping>
     <servlet-name>DownloadImage</servlet-name>
+    <url-pattern>/images/*</url-pattern>
     <url-pattern>/images</url-pattern>
 </servlet-mapping>
 
