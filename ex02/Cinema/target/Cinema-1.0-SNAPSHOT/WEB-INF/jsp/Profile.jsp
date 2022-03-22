@@ -25,7 +25,7 @@
         <th>IP</th>
     </tr>
     <c:forEach var="auth" items="${auths}">
-       <tr>
+       <tr >
            <td><c:out value="${auth.date}"/></td>
            <td><c:out value="${auth.time}"/></td>
            <td><c:out value="${auth.ip}"/></td>
@@ -34,7 +34,7 @@
 </table>
 <br/>
 
-<form action="/image" method="POST" enctype = "multipart/form-data">
+<form action="/images" method="POST" enctype = "multipart/form-data">
     <input type="file" name="file" placeholder="Filename: "/>
     <input type = "submit" value = "Upload File" />
 </form>

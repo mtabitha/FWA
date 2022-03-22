@@ -34,7 +34,7 @@
 </table>
 <br/>
 
-<form action="/image" method="POST" enctype = "multipart/form-data">
+<form action="/images" method="POST" enctype = "multipart/form-data">
     <input type="file" name="file" placeholder="Filename: "/>
     <input type = "submit" value = "Upload File" />
 </form>
