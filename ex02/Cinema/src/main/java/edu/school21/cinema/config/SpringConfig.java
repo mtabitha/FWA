@@ -1,8 +1,10 @@
 package edu.school21.cinema.config;
 
 import edu.school21.cinema.dao.AuthDao;
+import edu.school21.cinema.dao.ImageDao;
 import edu.school21.cinema.services.AuthService;
 import edu.school21.cinema.dao.UserDao;
+import edu.school21.cinema.services.ImageService;
 import edu.school21.cinema.services.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -34,17 +36,6 @@ public class SpringConfig  {
     public String password;
     @Value("${storage.path}")
     private String storagePath;
-
-    @Bean
-    String storagePath() {
-
-        File fileSaveDir = new File(storagePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
-        return storagePath;
-    }
-
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -106,7 +97,15 @@ public class SpringConfig  {
         return new AuthService(authDao());
     }
 
+    @Bean
+    ImageDao    imageDao() {
+        return new ImageDao(jdbcTemplate());
+    }
 
+    @Bean
+    ImageService imageService() {
+        return new ImageService(imageDao(), storagePath);
+    }
 
 
 }
