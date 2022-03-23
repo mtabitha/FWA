@@ -14,7 +14,7 @@ public class AuthDao {
 
     private RowMapper<Auth> authRowMapper = ((rs, rowNum) -> {
         return new Auth(
-                rs.getTimestamp("date").toLocalDateTime(),
+                rs.getTimestamp("dateTime").toLocalDateTime(),
                 rs.getString("ip")
         );
     });

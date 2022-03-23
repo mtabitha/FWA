@@ -23,7 +23,7 @@ import java.util.UUID;
         maxFileSize = 1024 * 1024 * 10,      // 10 MB
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
-public class DownloadImageServlet extends HttpServlet {
+public class ImageServlet extends HttpServlet {
 
     private ImageService imageService;
 
@@ -35,13 +35,15 @@ public class DownloadImageServlet extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        imageService.sendImage(req.getHttpServletMapping().getMatchValue(), resp);
+
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//        String fileName = UUID.randomUUID().toString();
-//        for (Part part : req.getParts()) {
-//            part.write(storagePath + "/" + fileName);
-//        }
-        System.out.println("hello");
         imageService.newImage(req.getPart("file"));
         resp.sendRedirect("/profile");
     }
