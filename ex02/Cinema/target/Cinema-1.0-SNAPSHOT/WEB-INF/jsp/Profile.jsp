@@ -54,13 +54,10 @@
 %>
 <div id="container">
 <div id="sidebar">
-    <img src="http://localhost:8080/images/cdc3da4e-b47d-4416-9b9d-8a5d30420239.png" width="300" height="300">
-    <br/>
+    <img src="http://localhost:8080/images/${images.get(images.size() - 1).name}" width="300" height="300">
+    <p><br/></p>
     <form action="/images" method="POST" enctype = "multipart/form-data" id="upload">
         <input type="file" name="file" value="Upload" onchange="document.getElementById('upload').submit()"/>
-    </form>
-    <form action="/images" method="POST" enctype = "multipart/form-data" id="upl">
-        <p><input type="button" name="button" value="Upload" onchange="document.getElementById('upl').submit()"></p>
     </form>
 </div>
 <div id="content">
