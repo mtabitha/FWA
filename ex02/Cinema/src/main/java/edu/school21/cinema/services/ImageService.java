@@ -57,8 +57,10 @@ public class ImageService {
 
     public void sendImage(String imageName, HttpServletResponse resp) throws IOException {
         Optional<Image> imageFromDB = imageDao.findByName(imageName);
-        if (!imageFromDB.isPresent())
+        if (!imageFromDB.isPresent()) {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return ;
+        }
         ServletOutputStream out = resp.getOutputStream();
         FileInputStream in = new FileInputStream(imageFromDB.get().getPath() + "/" + imageName);
         readImage(out, in);

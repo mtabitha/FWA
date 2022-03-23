@@ -1,9 +1,7 @@
 package edu.school21.cinema.servlets;
 
 import edu.school21.cinema.services.ImageService;
-import edu.school21.cinema.services.UserService;
 import org.springframework.context.ApplicationContext;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,12 +9,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.UUID;
 
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
