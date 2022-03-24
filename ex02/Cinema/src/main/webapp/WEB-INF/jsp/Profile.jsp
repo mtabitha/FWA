@@ -58,7 +58,7 @@
     <c:if test="${images.size() != 0}">
         <img src="http://localhost:8080/images/${images.get(images.size() - 1).name}" width="300" height="300">
     </c:if>
-    
+
     <p><br/></p>
     <form action="/images" method="POST" enctype = "multipart/form-data" id="upload">
         <input type="file" name="file" value="Upload" onchange="document.getElementById('upload').submit()"/>

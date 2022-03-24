@@ -9,10 +9,10 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String phoneNumber, String password) {
+    public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = phoneNumber;
+        this.email = email;
         this.password = password;
     }
 

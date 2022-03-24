@@ -13,18 +13,16 @@ import java.io.IOException;
 
 public class MainFilter extends HttpFilter {
 
-//    UserService userService;
-
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
-        System.out.println("MainFilter");
-
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        User user = (User) ((HttpServletRequest) req).getSession().getAttribute("user");
-        if (user != null)
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
             chain.doFilter(req, res);
-        response.sendRedirect("/signUp");
+            return ;
+        }
+        response.sendRedirect("/signIn");
     }
 }

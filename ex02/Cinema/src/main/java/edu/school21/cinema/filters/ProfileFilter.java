@@ -18,9 +18,13 @@ public class ProfileFilter extends HttpFilter {
 
         HttpServletResponse response = (HttpServletResponse) res;
         User user = (User) ((HttpServletRequest) req).getSession().getAttribute("user");
-        if (user != null)
+        if (user != null) {
             chain.doFilter(req, res);
-        else
-            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return ;
+        }
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        String path = (String) getServletContext().getAttribute("htmlPath");
+        req.getRequestDispatcher(path + "/SignIn.html").forward(req, res);
+
     }
 }

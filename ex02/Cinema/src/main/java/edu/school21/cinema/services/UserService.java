@@ -14,8 +14,14 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public void newUser(User user, HttpServletResponse resp) {
-        userDao.save(user);
+    public String newUser(User user) {
+
+        String path = "/signUp";
+        if (!getUser(user.getEmail()).isPresent()) {
+            userDao.save(user);
+            path = "/signIn";
+        }
+        return path;
     }
 
     public Optional<User> getUser(String email) {

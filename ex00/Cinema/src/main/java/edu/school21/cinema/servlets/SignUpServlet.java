@@ -42,8 +42,7 @@ public class SignUpServlet extends HttpServlet {
                 req.getParameter("email"),
                 passwordEncoder.encode(req.getParameter("password")));
 
-        userService.newUser(user, resp);
-        resp.sendRedirect("/signIn");
+        resp.sendRedirect(userService.newUser(user));
 
     }
 }
