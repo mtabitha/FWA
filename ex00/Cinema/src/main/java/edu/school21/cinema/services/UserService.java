@@ -17,7 +17,7 @@ public class UserService {
     public String newUser(User user) {
 
         String path = "/signUp";
-        if (!getUser(user.getEmail()).isPresent()) {
+        if (user.isValid() && !getUser(user.getEmail()).isPresent()) {
             userDao.save(user);
             path = "/signIn";
         }

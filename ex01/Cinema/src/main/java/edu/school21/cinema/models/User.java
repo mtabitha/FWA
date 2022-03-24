@@ -48,6 +48,10 @@ public class User {
         this.password = password;
     }
 
+    public boolean isValid() {
+        return !firstName.isEmpty() && !lastName.isEmpty() && email.matches("^(.+)@(\\S+)$");
+    }
+
     @Override
     public String toString() {
         return "User{" +

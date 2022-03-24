@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class UserService {
 
-    private UserDao userDao;
+    UserDao userDao;
 
     public UserService(UserDao userDao) {
         this.userDao = userDao;
@@ -17,7 +17,7 @@ public class UserService {
     public String newUser(User user) {
 
         String path = "/signUp";
-        if (!getUser(user.getEmail()).isPresent()) {
+        if (user.isValid() && !getUser(user.getEmail()).isPresent()) {
             userDao.save(user);
             path = "/signIn";
         }
