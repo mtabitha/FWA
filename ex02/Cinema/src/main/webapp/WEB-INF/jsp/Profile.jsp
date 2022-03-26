@@ -56,7 +56,7 @@
 <div id="sidebar">
 
     <c:if test="${images.size() != 0}">
-        <img src="http://localhost:8080/images/${images.get(images.size() - 1).name}" width="300" height="300">
+        <img src="http://localhost:8080/images/${images.get(images.size() - 1).id}" width="300" height="300">
     </c:if>
 
     <p><br/></p>
@@ -98,7 +98,7 @@
     <tbody>
     <c:forEach var="image" items="${images}">
        <tr >
-           <td width="50%" align="center"><a href="/images/${image.name}"><c:out value="${image.name}"/></a></td>
+           <td width="50%" align="center"><a target="_blank" rel="noopener noreferrer" href="/images/${image.id}"><c:out value="${image.name}"/></a></td>
            <td width="15%" align="center"><c:out value="${image.size}"/></td>
            <td width="35%" align="center"><c:out value="${image.path}"/></td>
        </tr>

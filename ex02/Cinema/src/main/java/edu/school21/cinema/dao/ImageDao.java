@@ -13,6 +13,7 @@ public class ImageDao {
 
     private RowMapper<Image> imageRowMapper = ((rs, rowNum) -> {
        return new Image(
+               rs.getString("id"),
                rs.getString("name"),
                rs.getString("size"),
                rs.getString("path")
@@ -20,11 +21,11 @@ public class ImageDao {
     });
 
     //language=SQL
-    private String SQL_SAVE_IMAGE = "INSERT INTO image VALUES (?, ?, ?)";
+    private String SQL_SAVE_IMAGE = "INSERT INTO image VALUES (?, ?, ?, ?)";
     //language=SQL
     private String SQL_FIND_ALL_IMAGES = "SELECT * FROM image";
     //language=SQL
-    private String SQL_FIND_BY_NAME_IMAGES = "SELECT * FROM image WHERE name=?";
+    private String SQL_FIND_BY_NAME_IMAGES = "SELECT * FROM image WHERE id=?";
 
 
     public ImageDao(JdbcTemplate jdbcTemplate) {
@@ -33,6 +34,7 @@ public class ImageDao {
 
     public void save(Image image) {
         jdbcTemplate.update(SQL_SAVE_IMAGE,
+                image.getId(),
                 image.getName(),
                 image.getSize(),
                 image.getPath()
@@ -43,7 +45,7 @@ public class ImageDao {
         return jdbcTemplate.query(SQL_FIND_ALL_IMAGES, imageRowMapper );
     }
 
-    public Optional<Image> findByName(String imageName) {
-        return jdbcTemplate.query(SQL_FIND_BY_NAME_IMAGES, imageRowMapper, imageName).stream().findAny();
+    public Optional<Image> findById(String imageId) {
+        return jdbcTemplate.query(SQL_FIND_BY_NAME_IMAGES, imageRowMapper, imageId).stream().findAny();
     }
 }

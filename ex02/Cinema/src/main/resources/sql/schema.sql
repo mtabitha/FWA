@@ -11,6 +11,7 @@ create table if not exists authentications (
 );
 
 create table if not exists image (
+    id   varchar,
     name varchar,
     size varchar,
     path varchar

@@ -51,12 +51,12 @@ public class ImageService {
 
         createDirectory(extension);
         writeImage(image, path);
-        imageDao.save(new Image(newImageName, readableFileSize(image.getSize()), storagePath + extension));
+        imageDao.save(new Image(newImageName, imageName, readableFileSize(image.getSize()), storagePath + extension));
     }
 
 
     public void sendImage(String imageName, HttpServletResponse resp) throws IOException {
-        Optional<Image> imageFromDB = imageDao.findByName(imageName);
+        Optional<Image> imageFromDB = imageDao.findById(imageName);
         if (!imageFromDB.isPresent()) {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
             return ;

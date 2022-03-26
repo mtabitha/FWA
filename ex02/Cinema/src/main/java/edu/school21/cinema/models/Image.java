@@ -2,6 +2,7 @@ package edu.school21.cinema.models;
 
 public class Image {
 
+    private String id;
     private String name;
     private String size;
     private String path;
@@ -9,10 +10,19 @@ public class Image {
     public Image() {
     }
 
-    public Image(String name, String size, String path) {
+    public Image(String id, String name, String size, String path) {
+        this.id = id;
         this.name = name;
         this.size = size;
         this.path = path;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
