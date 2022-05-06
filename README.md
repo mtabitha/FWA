@@ -8,7 +8,7 @@ Each new exercise complements the previous one.
 Web application provide HTML registration and authentication pages in response to */signIn* and */signUp* URL requests. All data go to SignUp servlet in a POST request using \<form> HTML tag. The information is stored in a database, while the password shall be encrypted using **BCrypt** algorithm. When a POST request is sent to SignIn servlet with an email and a password, a check is performed if a corresponding user exists in the database, as well as their password is correct. If the check is successful, an HttpSession object with user attribute shall be generated (attribute’s value is an object containing current user data). In case of a failed authentication, user redirected back to the login page. Application’s Spring context  accessible to all servlets via **ServletContextListener**. Data for connecting to the database available in **application.properties**.
 
 ## ex01 
-- Profile page access (the one with a single \<h1>Profile\</h1> tag) only to authenticated users.
+- Profile page access only to authenticated users.
 - For security, we create a **Filter** that can handle any incoming requests. This filter will check for presence of the attribute in the current session. If the attribute is found, access to the requested resource (*/profile* in our case) shall be provided.
 - Pages for */signUp* and */signIn* URLs may be retrieved for unauthorized requests. If the attribute is present, a user shall be redirected to */profile* page.
 
